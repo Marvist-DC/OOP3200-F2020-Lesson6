@@ -1,6 +1,6 @@
 /*
  * Author: Domenic Catalano
- * Date: Wednesday, October 14, 2020
+ * Date: Wednesday, October 16, 2020
  * Program Name: ICE 5 (Lesson 6)
  */
 
@@ -11,7 +11,7 @@
 #include <string>
 #include <iostream>
 #include "Vector2D.h"
-#include <assert.h>
+#include <cassert>
 
 template <class T>
 class Vector3D
@@ -19,7 +19,7 @@ class Vector3D
 public:
 	Vector3D(T x = static_cast<T>(0.0), T y = static_cast<T>(0.0), T z = static_cast<T>(0.0));
 	Vector3D(const std::string& x, const std::string& y, const std::string& z);
-	Vector3D(const Vector2D& vector_2d);
+	Vector3D(const Vector2D<float>& vector_2d);
 	~Vector3D();
 
 	// accessors
@@ -90,10 +90,13 @@ Vector3D<T>::Vector3D(const std::string& x, const std::string& y, const std::str
 		m_z = std::stod(z);
 	}
 
+	assert((typeid(T) == typeid(double)) || (typeid(T) == typeid(float)) || (typeid(T) == typeid(int)),
+		"error encountered");
+
 }
 
 template <class T>
-Vector3D<T>::Vector3D(const Vector2D& vector_2d)
+Vector3D<T>::Vector3D(const Vector2D<float>& vector_2d)
 {
 	m_x = static_cast<T>(vector_2d.GetX());
 	m_y = static_cast<T>(vector_2d.GetY());
@@ -155,4 +158,3 @@ std::string Vector3D<T>::ToString() const
 }
 
 #endif /* defined (__VECTOR3D__) */
-

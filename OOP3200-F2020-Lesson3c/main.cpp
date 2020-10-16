@@ -1,6 +1,6 @@
 /*
  * Author: Domenic Catalano
- * Date: Wednesday, October 14, 2020
+ * Date: Wednesday, October 16, 2020
  * Program Name: ICE 5 (Lesson 6)
  */
 #include <iomanip>
@@ -19,7 +19,7 @@ static void BuildGameObjects(std::vector<GameObject*>& game_objects, const int n
 		int id;
 		std::cout << "Enter the gameObject's ID: ";
 		std::cin >> id;
-		Vector2D point;
+		Vector2D<float> point;
 		std::cout << "Enter the gameObject's Position (x, y): ";
 		std::cin >> point;
 		std::cout << "\n--------------------------------------------------------------" << std::endl;
@@ -38,11 +38,11 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 	std::cout << "Magnitude of first gameObject is: " << object1->GetPosition().GetMagnitude() << std::endl;
 	std::cout << "Magnitude of second gameObject is: " << object2->GetPosition().GetMagnitude() << std::endl;
 	std::cout << "Distance between first gameObject and second gameObject is: "
-		<< Vector2D::Distance(object1->GetPosition(), object2->GetPosition()) << std::endl;
+		<< Vector2D<float>::Distance(object1->GetPosition(), object2->GetPosition()) << std::endl;
 	std::cout << "--------------------------------------------------------------\n" << std::endl;
 
 	std::cout << "The angle (in degrees) from the first gameObject to the second gameObject is: "
-		<< Vector2D::SignedAngle(object1->GetPosition(), object2->GetPosition()) << std::endl;
+		<< Vector2D<float>::SignedAngle(object1->GetPosition(), object2->GetPosition()) << std::endl;
 
 	std::cout << "--------------------------------------------------------------\n" << std::endl;
 	std::cout << "First Game Object Details:" << std::endl;
@@ -56,37 +56,13 @@ static void CompareGameObjects(GameObject* object1, GameObject* object2)
 
 int main()
 {
-	Vector2D point2d(200.0f, 300.0f);
+	std::vector<GameObject*> gameObjects;
 
-
-	Vector3D<int> point1;
-	Vector3D<float> point2;
-	Vector3D<float> point3(point2d);
-	Vector3D<uint8_t> point4("4", "5", "6");
-
-
-	std::cout << "Enter point1's Position (x, y, z): ";
-	std::cin >> point1;
-
-	std::cout << "Enter point2's Position (x, y, z): ";
-	std::cin >> point2;
-
-
-	std::cout << "---------------------------------------\n" << std::endl;
-
-	std::cout << point1 << std::endl;
-	std::cout << point2 << std::endl;
-	std::cout << point3 << std::endl;
-	std::cout << point4 << std::endl;
-
-
-
-
-	/*std::vector<GameObject*> gameObjects;
 	int num_of_GO;
 	std::cout << "How Many Game Objects do you need?: ";
 	std::cin >> num_of_GO;
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
+
 	BuildGameObjects(gameObjects, num_of_GO);
 
 
@@ -100,6 +76,6 @@ int main()
 	std::cout << "\n--------------------------------------------------------------" << std::endl;
 
 	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
-	CompareGameObjects(gameObjects[index1], gameObjects[index2]);*/
+	CompareGameObjects(gameObjects[index1], gameObjects[index2]);
 }
 
